@@ -1,0 +1,70 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  ALGORITMOBACKTRACKTSP
+ FileName: ALGORITMOBACKTRACKTSP.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "algoritmobacktracktsp.inc"
+
+domains
+	ciudad: symbol.
+	lista_ciudades: cuidad*.
+	distancia: integer.
+
+predicates
+	carretera: (ciudad, ciudad, distancia).
+	camino : (ciudad, ciudad, distancia).
+	miembro : (ciudad, lista_ciudades).
+	invertir_lista : (lista_ciudades, lista_ciudades).
+	invertir_lista_aux : (lista_ciudades, lista_ciudades, ).
+clauses
+	%Declaracion de las carreteras
+	carretera(arad, zerind, 75).
+  	carretera(arad, sibiu, 140).
+  	carretera(arad, timisoara, 118).
+  	carretera(zerind, oradea, 71).
+  	carretera(oradea, sibiu, 151).
+  	carretera(sibiu, fagaras, 99).
+  	carretera(sibiu, rimnicu_vilcea, 80).
+  	carretera(rimnicu_vilcea, pitesti, 97).
+  	carretera(pitesti, bucharest, 101).
+  	carretera(fagaras, bucharest, 211).
+  	carretera(bucharest, giurgiu, 90).
+  	carretera(bucharest, urziceni, 85).
+  	carretera(timisoara, lugoj, 111).
+  	carretera(lugoj, mehadia, 70).
+  	carretera(mehadia, dobreta, 75).
+  	carretera(dobreta, craiova, 120).
+  	carretera(craiova, rimnicu_vilcea, 146).
+  	carretera(craiova, pitesti, 138).
+  	carretera(urziceni, vaslui, 142).
+  	carretera(urziceni, hirsova, 98).
+  	carretera(hirsova, eforie, 86).
+  	carretera(vaslui, iasi, 92).
+  	carretera(iasi, neamt, 87).
+  	%Fin declaracion de las carreteras
+
+	%Declaramos las carreteras en ambas direcciones
+	carretera(X, Y, Distancia):-camino(X, Y, Distancia).
+	carretera(X, Y, Distancia):-camino(Y, X, Distancia).
+	
+	
+	
+	%%Declaramos funciones auxiliares
+	%Comprobar si una ciudad pertenece a un conjunto
+	miembro(E, [E|_]):-miembro(E, E).
+	miembro(E, [E|T]):-miembro([E|T]).
+	
+	%Invertir una lista 
+	invierte_lista(L, I)
+	invierte_lista_aux()
+	
+
+goal
+
+  
